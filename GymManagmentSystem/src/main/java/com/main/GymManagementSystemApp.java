@@ -21,28 +21,15 @@ public class GymManagementSystemApp {
         	
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ENTER THE CHOICE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.out.println();
-            System.out.println("1. Add Member");
-            System.out.println("2. Get Member by ID");
-            System.out.println("3. Get All Members");
-            System.out.println("4. Update Member");
-            System.out.println("5. Delete Member");
-            System.out.println();
-            
-            System.out.println("6. Add Trainer");
-            System.out.println("7. Get Trainer by ID");
-            System.out.println("8. Get All Trainers");
-            System.out.println("9. Update Trainer");
-            System.out.println("10. Delete Trainer");
-            System.out.println();
+            System.out.println(" 1 =>> Add Member \t2 =>> Get Member by ID  \t3 =>> Get All Members \t 4 =>> Update Member \t5 =>> Delete Member");
            
-            System.out.println("11. Process Payment");
-            System.out.println("12. Get Payment by ID");
-            System.out.println("13. Get All Payments");
-            System.out.println("14. Update Payment");
-            System.out.println("15. Delete Payment");
+            
+            System.out.println(" 6 =>> Add Trainer \t7 =>> Get Trainer by ID \t8 =>> Get All Trainers \t 9 =>> Update Trainer \t10 =>> Delete Trainer");
+           
+            System.out.println(" 11 =>> Process Payment 12 =>> Get Payment by ID \t13 =>> Get All Payments  14 =>> Update Payment \t15 =>> Delete Payment");
             System.out.println();
             
-            System.out.println("0. Exit");
+            System.out.println(" 0 =>> Exit");
             System.out.print("Enter your choice: ");
             
             int choice = scanner.nextInt();

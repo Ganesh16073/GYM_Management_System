@@ -21,7 +21,7 @@ public class MemberController implements MemberControllerInf{
 	public String addMember(Member member) {
 		
 		ms.addMember(member);
-		return "New Member Added";
+		return "New Member Added successfull";
 	}
 
 	@Override

@@ -24,17 +24,19 @@ public class Admin implements AdminInf{
 	@Autowired
 	PaymentController pcon;
 	
+	public static int mid=0;
+	
 	@Override
 	public void addMemebr() {
 		
 		Member m = new Member();
 		Scanner sc=new Scanner(System.in);
 		System.out.println();
-		System.out.println("Enter the Member Details");
-		int mid=new Random().nextInt(1000);
+		System.out.println("<< Enter the Member Details >>");
+		int mid=++this.mid;
 		m.setMid(mid);
 		
-		
+		System.out.println();
 		System.out.println("Enter the Name of Member");
 		String name=sc.nextLine();
 		m.setName(name);
@@ -45,9 +47,9 @@ public class Admin implements AdminInf{
 		
 		
 		System.out.println("Enter the Gender");
-		System.out.println("1: Male");
-		System.out.println("2: Female");
-		System.out.println("3: Others");
+		System.out.println("1 for Male");
+		System.out.println("2 for Female");
+		System.out.println("3 for Others");
 		int chooseGender=sc.nextInt();
 		String gender;;
 		switch(chooseGender)
@@ -72,9 +74,9 @@ public class Admin implements AdminInf{
 		
 		
 		System.out.println("Choosethe memberShip Type");
-		System.out.println("1: Monthly");
-		System.out.println("2: Quarterly");
-		System.out.println("3: Yearly");
+		System.out.println("1 for Monthly");
+		System.out.println("2 for Quarterly");
+		System.out.println("3 for Yearly");
 		int choosemembership=sc.nextInt();
 		String membershipType;
 		switch(choosemembership)
@@ -95,6 +97,53 @@ public class Admin implements AdminInf{
 		
 		String result=mcon.addMember(m);
 		System.out.println(result);
+		System.out.println();
+		
+	    
+	        Payment pp = new Payment();
+
+	        // Set the payment ID using static counter and increment it
+	        pp.setPaymentId(this.mid);
+	        
+	        System.out.println("Enter the Payment Details");
+
+	        System.out.println("Enter the Amount");
+	        double amount = sc.nextDouble();
+	        pp.setAmount(amount);
+
+	        System.out.println("Enter the Date (yyyy-MM-dd):");
+	        String dateInput = sc.next();
+	        LocalDate paymentDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	        pp.setPaymentDate(paymentDate);
+
+	        System.out.println("Enter Payment Method (1 for Credit Card, 2 for Cash, 3 for Bank Transfer):");
+	        int paymentChoice = sc.nextInt();
+	        String paymentMethod = "";
+
+	        switch (paymentChoice) {
+	            case 1:
+	                paymentMethod = "Credit Card";
+	                break;
+	            case 2:
+	                paymentMethod = "Cash";
+	                break;
+	            case 3:
+	                paymentMethod = "Bank Transfer";
+	                break;
+	            default:
+	                System.out.println("Invalid payment method selected. Defaulting to 'Unknown'.");
+	                paymentMethod = "Unknown";
+	                break;
+	        }
+
+	        pp.setPaymentMethod(paymentMethod);
+
+	        System.out.println(" Member ID set done:");
+	        int memberId = m.getMid(); // Use the newly created member's ID
+	        pp.setMemberId(memberId);
+
+	        // Process payment through the PaymentController
+	        pcon.processPayment(pp);
 		
 
 	}
