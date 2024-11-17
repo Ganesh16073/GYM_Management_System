@@ -14,7 +14,7 @@ public class MemberService implements MemberServiceInf {
 	List<Member> mem=new ArrayList<Member>();
 	
 	@Override
-	public void addMember(Member member) {
+	public void addMember(Member  member) {
 		mem.add(member);
 		System.out.println(mem);
 		System.out.println("New Member Added => "+member);
@@ -29,9 +29,8 @@ public class MemberService implements MemberServiceInf {
 	@Override
 	public List<Member> getAllMember() {
 		
-//		return new ArrayList<Member>(mem);
+		return new ArrayList<Member>(mem);
 		
-		return  mem;
 	}
 
 	@Override

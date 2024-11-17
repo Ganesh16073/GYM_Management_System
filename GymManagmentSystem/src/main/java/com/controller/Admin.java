@@ -16,28 +16,13 @@ import comm.model.Trainer;
 @Controller
 public class Admin implements AdminInf{
 
-	Member mdata;
-	@Autowired
-	public Admin(Member member)
-	{
-		this.mdata=member;
-		System.out.println("Triggered");
-	}
+	
 	@Autowired
 	MemberController mcon;
 	@Autowired
 	TrainerController tcon;
 	@Autowired
 	PaymentController pcon;
-	
-	
-	
-	
-	@Autowired
-	Trainer tdata;
-	
-	@Autowired
-	Payment pdata;
 	
 	@Override
 	public void addMemebr() {
@@ -139,6 +124,7 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void updateMember() {
+		Member mdata = new Member();
 		Scanner sc=new Scanner(System.in);
 		System.out.println();
 		System.out.println("Enter the Member Details to Upadate \t Enter the corect Id ");
@@ -221,21 +207,22 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void addTrainer() {
+		Trainer nt=new Trainer();
 		Scanner sc=new Scanner(System.in);
 		System.out.println();
 		System.out.println("Enter the Trainer Details..");
 		System.out.println();
 		
 		int tid=new Random().nextInt(1000);
-		tdata.setTid(tid);;
+		nt.setTid(tid);;
 		
 		System.out.println("Enter the Name of Trainer");
 		String name=sc.nextLine();
-		tdata.setName(name);
+		nt.setName(name);
 		
 		System.out.println("Enter the Age");
 		int age=sc.nextInt();
-		tdata.setAge(age);
+		nt.setAge(age);
 		
 		System.out.println("Enter the Gender");
 		System.out.println("1: Male");
@@ -257,25 +244,25 @@ public class Admin implements AdminInf{
 		default:
 			gender=null;
 		}
-		tdata.setGender(gender);
+		nt.setGender(gender);
 		
 		System.out.println("Enter the Mobile Number (eg.. 10 digit");
 		long mobileNo=sc.nextLong();
-		tdata.setMobileNo(mobileNo);
+		nt.setMobileNo(mobileNo);
 		
 		System.out.println("Enter the Experience in years (eg.. 1 or 2");
 		int experienceYear=sc.nextInt();
-		tdata.setExperienceYear(experienceYear);
+		nt.setExperienceYear(experienceYear);
 		
 		System.out.println("Enter the Address");
 		sc.nextLine();
 		String address=sc.nextLine();
-		tdata.setAddress(address);
+		nt.setAddress(address);
 		
 		System.out.println("Enter the Salary");
 		double salary=sc.nextDouble();
-		tdata.setSalary(salary);
-		tcon.addTraniner(tdata);
+		nt.setSalary(salary);
+		tcon.addTraniner(nt);
 		
 	}
 
@@ -296,6 +283,7 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void updateTrainer() {
+		Trainer tdata=new Trainer();
 		Scanner sc=new Scanner(System.in);
 		System.out.println();
 		System.out.println("Enter the Trainer Details..");
@@ -368,22 +356,23 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void processPayment() {
+		Payment pp=new Payment();
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the Payment Details");
 		System.out.println();
 		
 		
 		int paymentId=new Random().nextInt(1000);
-		pdata.setPaymentId(paymentId);
+		pp.setPaymentId(paymentId);
 		
 		System.out.println("Enter the Amount");
 		double amount=sc.nextDouble();
-		pdata.setAmount(amount);
+		pp.setAmount(amount);
 		
 		 System.out.println("Enter the Date (yyyy-MM-dd):");
 		 String dateInput = sc.next();
 		 LocalDate paymentDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-	     pdata.setPaymentDate(paymentDate);
+	     pp.setPaymentDate(paymentDate);
 		    
 	    
 	     System.out.println("Enter Payment Method (1 for Credit Card, 2 for Cash, 3 for Bank Transfer):");
@@ -406,13 +395,13 @@ public class Admin implements AdminInf{
 	             break;
 	     }
 
-	     pdata.setPaymentMethod(paymentMethod);
+	     pp.setPaymentMethod(paymentMethod);
 	     
 	     System.out.println("Enter Member ID:");
 	     int memberId = sc.nextInt();
-	     pdata.setMemberId(memberId);
+	     pp.setMemberId(memberId);
 	     
-	     pcon.processPayment(pdata);
+	     pcon.processPayment(pp);
 	    
 		
 	}
@@ -433,6 +422,7 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void updatePayment() {
+		Payment pdata=new Payment();
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the Payent Id");
 		int id=sc.nextInt();
