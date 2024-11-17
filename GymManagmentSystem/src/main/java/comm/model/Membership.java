@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class Membership {
 
+	private int id;  
 	private String type; // Monthly, Quarterly, Yearly
 	@Autowired
 	private LocalDate startDate;
@@ -20,11 +21,13 @@ public class Membership {
 	{
 		
 	}
-		    
-	public Membership(String type, LocalDate startDate, int durationInMonths) {
+	
+	public Membership(int id, String type, LocalDate startDate, LocalDate endDate) {
+		super();
+		this.id = id;
 		this.type = type;
 		this.startDate = startDate;
-		this.endDate = startDate.plusMonths(durationInMonths);
+		this.endDate = endDate;
 	}
 
 	public String getType() {
@@ -49,6 +52,21 @@ public class Membership {
 
 	public void setEndDate(int durationInMonths) {
 		this.endDate = this.startDate.plusMonths(durationInMonths);
+	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Membership [id=" + id + ", type=" + type + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
 	
 	
