@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,25 +23,34 @@ public class MembershipController implements MembershipControllerInf{
 	@Override
 	public Membership getMembershipById(int id) {
 		
-		return null;
+		Optional<Membership> m=ms.getMembershipById(id);
+		if(m.isPresent())
+		{
+			return m.get();
+		}
+		else
+		{
+			return null;
+		}
+		
 	}
 
 	@Override
 	public List<Membership> getAllMember(Membership membership) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return ms.getAllMemberships();
 	}
 
 	@Override
 	public String updateMembership(Membership membership) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return ms.updateMembership(membership);
 	}
 
 	@Override
 	public String deleteMembershipById(Membership membership) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return ms.deleteMembership(0);
 	}
 
 }

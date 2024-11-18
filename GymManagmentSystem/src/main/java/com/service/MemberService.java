@@ -16,7 +16,6 @@ public class MemberService implements MemberServiceInf {
 	@Override
 	public void addMember(Member  member) {
 		mem.add(member);
-//		System.out.println(mem);
 		System.out.println("New Member Added Details=> "+member);
 	}
 

@@ -83,6 +83,8 @@ public class GymManagementSystemApp {
                     admin.deletePaymentById();
                     break;
                 case 0:
+                	System.out.println();
+                	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Thank You  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
                     running = false;
                     break;
                 default:

@@ -33,8 +33,7 @@ public class Admin implements AdminInf{
 		Scanner sc=new Scanner(System.in);
 		System.out.println();
 		System.out.println("<< Enter the Member Details >>");
-		int mid=++this.mid;
-		m.setMid(mid);
+		m.setMid(++mid);
 		
 		System.out.println();
 		System.out.println("Enter the Name of Member");
@@ -103,7 +102,7 @@ public class Admin implements AdminInf{
 	        Payment pp = new Payment();
 
 	        // Set the payment ID using static counter and increment it
-	        pp.setPaymentId(this.mid);
+	        pp.setPaymentId(mid);
 	        
 	        System.out.println("Enter the Payment Details");
 

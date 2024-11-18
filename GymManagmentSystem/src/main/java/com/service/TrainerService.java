@@ -29,10 +29,12 @@ public class TrainerService implements TrainerServiceInf{
             return tra.stream()
                     .filter(trainer -> trainer.getTid() == id)
                     .findFirst();
+
+                    
         } catch (Exception e) {
             System.err.println("Error while finding trainer by ID: " + e.getMessage());
             return Optional.empty();
-        }
+        } 
     }
 
 	@Override

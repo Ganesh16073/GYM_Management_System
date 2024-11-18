@@ -42,10 +42,8 @@ public class MemberController implements MemberControllerInf{
 	@Override
 	public List<Member> getAllMember() {
 		
-		
 		List<Member> memList =  ms.getAllMember();
 		
-		System.out.println(memList);
 		return memList;
 	}
 
