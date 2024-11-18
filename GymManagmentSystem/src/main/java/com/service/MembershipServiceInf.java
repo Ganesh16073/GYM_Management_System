@@ -7,7 +7,7 @@ import comm.model.Membership;
 
 public interface MembershipServiceInf {
 
-	public String addMembership(Membership membership);
+	public void addMembership(Membership membership);
 	public Optional<Membership> getMembershipById(int id);
 	public List<Membership> getAllMemberships() ;
 	public String updateMembership(Membership membership);

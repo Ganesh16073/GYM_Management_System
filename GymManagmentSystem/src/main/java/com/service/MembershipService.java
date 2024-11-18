@@ -13,22 +13,23 @@ public class MembershipService implements MembershipServiceInf{
 	List<Membership>  memberships=new ArrayList<>();
 
 	@Override
-	public String addMembership(Membership membership) {
+	public void addMembership(Membership membership) {
 		try
 		{
 			boolean check= memberships.add(membership);
 			if(check)
 			{
-				return "New Membership added Sucessfull"+membership+"";
+				System.out.println("New Membership added Sucessfull"+membership+"");;
 			}
 			else
 			{
-				return "Member not added some problem is there";
+				System.out.println("Member not added some problem is there");
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			return "Member not exception arrise";
+			System.out.println("Member not added exception arrise");
+			
 		}
 		
 		

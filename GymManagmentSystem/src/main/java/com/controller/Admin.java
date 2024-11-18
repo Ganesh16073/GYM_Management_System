@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import comm.model.Member;
+import comm.model.Membership;
 import comm.model.Payment;
 import comm.model.Trainer;
 
@@ -23,6 +24,9 @@ public class Admin implements AdminInf{
 	TrainerController tcon;
 	@Autowired
 	PaymentController pcon;
+	
+	@Autowired
+	MembershipController mscon;
 	
 	public static int mid=0;
 	
@@ -99,6 +103,13 @@ public class Admin implements AdminInf{
 		System.out.println();
 		
 	    
+		System.out.println();
+		System.out.println("Enter the Payment Details");
+		System.out.println();
+		
+//--------------------------------------------------------------------------------------------------------------------------------
+
+		
 	        Payment pp = new Payment();
 
 	        // Set the payment ID using static counter and increment it
@@ -110,9 +121,10 @@ public class Admin implements AdminInf{
 	        double amount = sc.nextDouble();
 	        pp.setAmount(amount);
 
-	        System.out.println("Enter the Date (yyyy-MM-dd):");
-	        String dateInput = sc.next();
-	        LocalDate paymentDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//	        System.out.println("Enter the Date (yyyy-MM-dd):");
+//	        String dateInput = sc.next();
+	       // LocalDate paymentDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	        LocalDate paymentDate = LocalDate.now();
 	        pp.setPaymentDate(paymentDate);
 
 	        System.out.println("Enter Payment Method (1 for Credit Card, 2 for Cash, 3 for Bank Transfer):");
@@ -143,7 +155,47 @@ public class Admin implements AdminInf{
 
 	        // Process payment through the PaymentController
 	        pcon.processPayment(pp);
-		
+//--------------------------------------------------------------------------------------------------------------------------------
+	        System.out.println();
+	        System.out.println("Enter the Membershp Details");
+	        System.out.println();
+	        
+	        Membership mship=new Membership();
+			
+			mship.setId(mid);
+			
+//			System.out.println("Enter the Date (yyyy-MM-dd):");
+//	      String dateInput = sc.next();
+	        LocalDate startDate = LocalDate.now();
+	        mship.setStartDate(startDate);
+			
+			System.out.println("Enter the Membership Type");
+			System.out.println("1 for Monthly");
+			System.out.println("2 for Quaterly");
+			System.out.println("3 for Yearly");
+			int choice=sc.nextInt();
+			switch(choice)
+			{
+			case 1:
+				mship.setType("Monthly");
+				mship.setEndDate(1); // setting the end data based on membership
+				break;
+			case 2:
+				mship.setType("Quarterly");
+				mship.setEndDate(3);
+				break;
+			case 3:
+				mship.setType("Yearly");
+				mship.setEndDate(12);
+				break;
+			
+				default:
+					mship.setType(null);
+					mship.setEndDate(0);
+					System.out.println("Invalid choice");
+			}
+				
+			mscon.addMembership(mship);
 
 	}
 
@@ -523,5 +575,71 @@ public class Admin implements AdminInf{
 		System.out.println(pcon.deletePaymentById(id));
 		sc.close();
 	}
+	
+	
+	
+	public void addMembership()
+	{
+		Membership mship=new Membership();
+		
+		Scanner sc=new Scanner(System.in);
+		mship.setId(new Random().nextInt(1000));
+		
+//		System.out.println("Enter the Date (yyyy-MM-dd):");
+//      String dateInput = sc.next();
+        LocalDate startDate = LocalDate.now();
+        mship.setStartDate(startDate);
+		
+		System.out.println("Enter the Membership Type");
+		System.out.println("1 for Monthly");
+		System.out.println("2 for Quaterly");
+		System.out.println("3 for Yearly");
+		int choice=sc.nextInt();
+		switch(choice)
+		{
+		case 1:
+			mship.setType("Monthly");
+			mship.setEndDate(1); // setting the end data based on membership
+			break;
+		case 2:
+			mship.setType("Quarterly");
+			mship.setEndDate(3);
+			break;
+		case 3:
+			mship.setType("Yearly");
+			mship.setEndDate(12);
+			break;
+		
+			default:
+				mship.setType(null);
+				mship.setEndDate(0);
+				System.out.println("Invalid choice");
+		}
+			
+		mscon.addMembership(mship);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

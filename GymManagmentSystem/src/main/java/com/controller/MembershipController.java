@@ -17,7 +17,8 @@ public class MembershipController implements MembershipControllerInf{
 
 	@Override
 	public String addMembership(Membership membership) {
-		return ms.addMembership(membership);
+		ms.addMembership(membership);
+		return "New Membership added" ;
 	}
 
 	@Override
