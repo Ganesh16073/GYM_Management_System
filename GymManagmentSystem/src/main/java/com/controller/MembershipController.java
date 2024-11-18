@@ -22,22 +22,22 @@ public class MembershipController implements MembershipControllerInf{
 	}
 
 	@Override
-	public Membership getMembershipById(int id) {
+	public String getMembershipById(int id) {
 		
 		Optional<Membership> m=ms.getMembershipById(id);
 		if(m.isPresent())
 		{
-			return m.get();
+			return "Membership found is =>> "+m.get();
 		}
 		else
 		{
-			return null;
+			return "Membership Not Found";
 		}
 		
 	}
 
 	@Override
-	public List<Membership> getAllMember(Membership membership) {
+	public List<Membership> getAllMember() {
 	
 		return ms.getAllMemberships();
 	}
@@ -49,9 +49,9 @@ public class MembershipController implements MembershipControllerInf{
 	}
 
 	@Override
-	public String deleteMembershipById(Membership membership) {
+	public String deleteMembershipById(int id) {
 
-		return ms.deleteMembership(0);
+		return ms.deleteMembership(id);
 	}
 
 }

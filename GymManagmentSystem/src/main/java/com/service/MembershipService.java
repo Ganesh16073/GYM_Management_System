@@ -93,12 +93,16 @@ public class MembershipService implements MembershipServiceInf{
 		try
 		{
 			boolean check=memberships.removeIf(m -> m.getId()==id);
-			return "Membership deleted by id"+id;
+			if(check)
+			    return "Membership deleted by id"+id;
+			else
+				return "Membershipnot Found";
 		}
 		catch (Exception e) {
-			
+			e.printStackTrace();
+			return "Membership Not Found by id"+id;
 		}
-		return "Membership Not Found by id"+id;
+		
 		
 		
 	}

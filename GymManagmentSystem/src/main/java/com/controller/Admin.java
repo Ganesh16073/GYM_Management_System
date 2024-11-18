@@ -3,6 +3,7 @@ package com.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -620,8 +621,92 @@ public class Admin implements AdminInf{
 	}
 	
 	
+	public void getMembershipById()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the id to find Membership");
+		int id;
+		try
+		{
+			id=sc.nextInt();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Enter the correct id");
+			id=sc.nextInt();
+		}
+		System.out.println(mscon.getMembershipById(id));
+		
+	}
+	
+	public void getAllMembership()
+	{
+		List<Membership> l=mscon.getAllMember();
+		l.forEach(ms -> System.out.println(ms));
+	}
+	
+	public void updateMembership()
+	{
+		Membership mship=new Membership();
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the Membership id to update");
+		int id=sc.nextInt();
+		mship.setId(id);
+		
+		System.out.println("Enter the Date (yyyy-MM-dd):");
+       String dateInput = sc.next();
+      LocalDate UDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        mship.setStartDate(UDate);
+		
+		System.out.println("Enter the Membership Type");
+		System.out.println("1 for Monthly");
+		System.out.println("2 for Quaterly");
+		System.out.println("3 for Yearly");
+		int choice=sc.nextInt();
+		switch(choice)
+		{
+		case 1:
+			mship.setType("Monthly");
+			mship.setEndDate(1); // setting the end data based on membership
+			break;
+		case 2:
+			mship.setType("Quarterly");
+			mship.setEndDate(3);
+			break;
+		case 3:
+			mship.setType("Yearly");
+			mship.setEndDate(12);
+			break;
+		
+			default:
+				mship.setType(null);
+				mship.setEndDate(0);
+				System.out.println("Invalid choice");
+		}
+		System.out.println(mscon.updateMembership(mship));
+			
+		
+	}
 	
 	
+	public void deleteMembershipById()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the id to Delete Membership");
+		int id;
+		try
+		{
+			id=sc.nextInt();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Enter the correct id");
+			id=sc.nextInt();
+		}
+		mscon.deleteMembershipById(id);
+		
+	}
 	
 	
 	

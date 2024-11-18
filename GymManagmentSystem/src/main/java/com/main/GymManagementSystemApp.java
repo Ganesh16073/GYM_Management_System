@@ -85,6 +85,18 @@ public class GymManagementSystemApp {
                 case 16:
                 	admin.addMembership();
                 	break;
+                case 17:
+                	admin.getMembershipById();
+                	break;
+                case 18:
+                	admin.getAllMembership();
+                	break;
+                case 19:
+                	admin.updateMembership();
+                	break;
+                case 20:
+                	admin.deleteMembershipById();
+                	break;
                 	
                 case 0:
                 	System.out.println();
