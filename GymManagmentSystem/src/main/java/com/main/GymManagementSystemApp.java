@@ -82,6 +82,10 @@ public class GymManagementSystemApp {
                 case 15:
                     admin.deletePaymentById();
                     break;
+                case 16:
+                	admin.addMembership();
+                	break;
+                	
                 case 0:
                 	System.out.println();
                 	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Thank You  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
