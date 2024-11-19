@@ -31,14 +31,24 @@ public class GymManagementSystemApp {
             
             System.out.println(" 0 =>> Exit");
             System.out.print("Enter your choice: ");
-            
-            int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
+            int choice;
+            try
+            {
+            	choice  = scanner.nextInt();
+            	scanner.nextLine();// Consume newline
+            }
+            catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("Enter the Correct input choice");
+				scanner.nextLine();
+				choice  = scanner.nextInt();
+			}
+
             
             switch (choice) {
                 case 1:
                 	admin=cxt.getBean("admin",Admin.class);
-                    admin.addMemebr();
+                    admin.addMember();
                     break;
                 case 2:
                     admin.getMemberById();

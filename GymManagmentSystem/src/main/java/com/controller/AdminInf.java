@@ -1,7 +1,7 @@
 package com.controller;
 
 public interface AdminInf {
-	public void addMemebr();
+	public void addMember();
 	public void getMemberById();
 	public void getAllMember();
 	public void updateMember();
