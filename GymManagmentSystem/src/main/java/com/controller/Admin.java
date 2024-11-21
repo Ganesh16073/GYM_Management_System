@@ -206,7 +206,7 @@ public class Admin implements AdminInf{
 	        boolean validPaymentMethod = false;
 	        while (!validPaymentMethod) {
 	            try {
-	                System.out.println("Enter Payment Method (1 for Credit Card, 2 for Cash, 3 for Bank Transfer):");
+	                System.out.println("Enter Payment Method (1 for Credit Card, 2 for Cash, 3 for Bank Transfer, 4 for UPI):");
 	                int paymentChoice = sc.nextInt();
 	                switch (paymentChoice) {
 	                    case 1:
@@ -226,7 +226,7 @@ public class Admin implements AdminInf{
 	                    	 validPaymentMethod = true;
 		                        break;
 	                    default:
-	                        throw new IllegalArgumentException("Invalid choice! Please choose 1 for Credit Card, 2 for Cash, or 3 for Bank Transfer.");
+	                        throw new IllegalArgumentException("Invalid choice! Please choose 1 for Credit Card, 2 for Cash, or 3 for Bank Transfer or 4 for UPI");
 	                }
 	            } catch (InputMismatchException e) {
 	                System.out.println("Invalid input! Please enter a number for payment method.");
@@ -258,7 +258,7 @@ public class Admin implements AdminInf{
 	        boolean validMshipType = false;
 	        while (!validMshipType) {
 	            try {
-	                System.out.println("Enter the Membership Type");
+	                System.out.println("Enter the Membership duriation");
 	                System.out.println("1 for Monthly");
 	                System.out.println("2 for Quarterly");
 	                System.out.println("3 for Yearly");
@@ -268,16 +268,19 @@ public class Admin implements AdminInf{
 	                        mship.setType("Monthly");
 	                        mship.setEndDate(1);
 	                        validMshipType = true;
+	                        sc.nextLine();
 	                        break;
 	                    case 2:
 	                        mship.setType("Quarterly");
 	                        mship.setEndDate(3);
 	                        validMshipType = true;
+	                        sc.nextLine();
 	                        break;
 	                    case 3:
 	                        mship.setType("Yearly");
 	                        mship.setEndDate(12);
 	                        validMshipType = true;
+	                        sc.nextLine();
 	                        break;
 	                    default:
 	                        throw new IllegalArgumentException("Invalid choice! Please choose 1 for Monthly, 2 for Quarterly, or 3 for Yearly.");
@@ -294,9 +297,7 @@ public class Admin implements AdminInf{
 	    } catch (Exception e) {
 	        System.out.println("An unexpected error occurred: " + e.getMessage());
 	        e.printStackTrace(); // Print the stack trace for debugging purposes
-	    } finally {
-	        sc.close(); // Ensure scanner is closed after usage
-	    }
+	    } 
 	}
 
 	@Override
@@ -318,7 +319,7 @@ public class Admin implements AdminInf{
 			}
 			finally
 			{
-				sc.close();
+				sc.nextLine();
 			}
 		}
 		
@@ -504,10 +505,7 @@ public class Admin implements AdminInf{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			finally
-			{
-				sc.close();
-			}
+			
 		}
 
 		System.out.println(mcon.updateMember(mdata));
@@ -532,10 +530,7 @@ public class Admin implements AdminInf{
 				e.printStackTrace();
 				System.out.println("Enter the Valid Input");
 			}
-			finally
-			{
-				sc.close();
-			}
+			
 		
 		}
 	}
@@ -679,7 +674,7 @@ public class Admin implements AdminInf{
 	    }
 	    nt.setSalary(salary);
 	    tcon.addTraniner(nt);
-	    sc.close();
+	   
 	}
 
 	@Override
@@ -699,7 +694,7 @@ public class Admin implements AdminInf{
 			}
 			
 		}
-		sc.close();
+		
 		
 		
 	}
@@ -868,9 +863,9 @@ public class Admin implements AdminInf{
 	    }
 	    tdata.setSalary(salary);
 
-	    // Update trainer data (assuming tcon is a valid instance of the trainer controller)
+	  
 	    System.out.println(tcon.updateTrainer(tdata));
-	    sc.close();
+	    
 	}
 
 	@Override
@@ -887,6 +882,7 @@ public class Admin implements AdminInf{
 				validId=true;
 			}
 			catch (Exception e) {
+				sc.nextLine();
 				System.out.println(e.getMessage());
 			}
 		}

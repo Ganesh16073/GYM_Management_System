@@ -35,12 +35,12 @@ public class GymManagementSystemApp {
             try
             {
             	choice  = scanner.nextInt();
-            	scanner.nextLine();// Consume newline
+            	
             }
             catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("Enter the Correct input choice");
-				scanner.nextLine();
+				
 				choice  = scanner.nextInt();
 			}
 
@@ -120,7 +120,6 @@ public class GymManagementSystemApp {
         }
         
         cxt.close();
-        scanner.close();
 		
 	}
 }
