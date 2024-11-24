@@ -3,13 +3,13 @@ package com.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Controller;
 
 import comm.model.Member;
@@ -31,13 +31,37 @@ public class Admin implements AdminInf{
 	@Autowired
 	MembershipController mscon;
 	
+	@Lookup
+	public Member getMember()
+	{
+		return null;
+	}
+	
+	@Lookup
+	public Payment getPayment()
+	{
+		return null;
+	}
+	
+	@Lookup
+	public Membership getMembership()
+	{
+		return null;
+	}
+	
+	@Lookup
+	public Trainer getTrainer()
+	{
+		return null;
+	}
+	
 	public static int mid=0;
 	public static int tid=0;
 	
 	@Override
 	public void addMember() {
 	    Scanner sc = new Scanner(System.in);
-	    Member m = new Member();
+	    Member m = getMember();
 	    
 	    try {
 	        System.out.println();
@@ -177,7 +201,7 @@ public class Admin implements AdminInf{
 	        
 	        //-----------------------------------------------------------------------------------------------------------------------
 	        // Payment Details input with exception handling
-	        Payment pp = new Payment();
+	        Payment pp =getPayment();
 	        pp.setPaymentId(mid);
 
 	        double amount = 0;
@@ -248,7 +272,7 @@ public class Admin implements AdminInf{
 	        System.out.println("Enter the Membership Details");
 	        System.out.println();
 	        
-	        Membership mship = new Membership();
+	        Membership mship = getMembership();
 	        mship.setId(mid);
 	        
 	        LocalDate startDate = LocalDate.now();
@@ -537,7 +561,7 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void addTrainer() {
-	    Trainer nt = new Trainer();
+	    Trainer nt = getTrainer();
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println();
 	    System.out.println("Enter the Trainer Details..");
@@ -892,7 +916,7 @@ public class Admin implements AdminInf{
 
 	@Override
 	public void processPayment() {
-	    Payment pp = new Payment();
+	    Payment pp = getPayment();
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("Enter the Payment Details");
 	    System.out.println();
@@ -1219,7 +1243,7 @@ public class Admin implements AdminInf{
 	
 	public void addMembership()
 	{
-		Membership mship=new Membership();
+		Membership mship=getMembership();
 		
 		Scanner sc=new Scanner(System.in);
 		mship.setId(new Random().nextInt(1000));
